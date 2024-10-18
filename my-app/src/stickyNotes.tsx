@@ -64,6 +64,7 @@ export const StickyNotes = () => {
 
                     <div>
                         <textarea
+                            placeholder="Note Content"
                             onChange={(event) =>
                                 setCreateNote({ ...createNote, content: event.target.value })}
                             required>
@@ -87,7 +88,7 @@ export const StickyNotes = () => {
 
 
 
-                <div className="notes-grid">
+                <div className="notes-grid" data-testid="notes-container"> 
                     {notes.map((note) => (
                         <div
                             key={note.id}
@@ -101,7 +102,7 @@ export const StickyNotes = () => {
                                     )}
                                 </button>
 
-                                <button onClick={() => deleteNote(note)}>x</button>
+                                <button onClick={() => deleteNote(note)} data-testid={"delete-button"+note.title}>x</button>
                             </div>
                             <h2 contentEditable="true"> {note.title} </h2>
                             <p contentEditable="true"> {note.content} </p>
